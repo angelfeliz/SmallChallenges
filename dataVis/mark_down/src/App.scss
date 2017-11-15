@@ -1,9 +1,15 @@
-.container
-  width: 100%
-.flex-row
-  display: flex
-  flex-direction: row
-textarea
-  resize: none
-  width: 50%
-  margin-right: 2%
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+.container {
+  width: 100%;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+textarea{
+  resize: none;
+  width: 50%;
+  margin-right: 2%;
+}
