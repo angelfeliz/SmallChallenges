@@ -32,9 +32,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-   let fccUsers = getTopHundredUsers();
-   console.log(fccUsers);
-   this.setState({feed:fccUsers.recent, recent:fccUsers.recent, allTime: fccUsers.allTime});
+     getTopHundredUsers((fccUsers)=>{
+       console.log(fccUsers);
+       this.setState({feed:fccUsers.recent, recent:fccUsers.recent, allTime: fccUsers.allTime});
+     });
   }
   render(){
     /*if(this.state.feed.length > 0) {

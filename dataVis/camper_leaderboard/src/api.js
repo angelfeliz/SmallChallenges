@@ -1,8 +1,12 @@
 import 'whatwg-fetch';
 
 
-export const  getTopHundredUsers = () => {
-  fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
+export const  getTopHundredUsers = (callback) => {
+  let users = {
+    recent:'',
+    allTime:''
+  }
+   fetch('https://fcctop100.herokuapp.com/api/fccusers/top/recent')
    .then(function(response) {
      return response.json();
    })
@@ -15,11 +19,12 @@ export const  getTopHundredUsers = () => {
      return response.json();
    })
    .then(allTimeData => {
-      return {
-        recent: data,
-        allTime: allTimeData
-      }
+        users.recent = data;
+        users.allTime = allTimeData;
+
+        callback(users);
   })
   })
 
+return users;
 }
