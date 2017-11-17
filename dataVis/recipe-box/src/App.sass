@@ -1,0 +1,119 @@
+.flex-row
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+.flex-column
+  display: flex
+  flex-direction: column
+  width: 50%
+  align-items: center
+  justify-content: center
+  margin: 0 auto
+
+.recipe-container
+  width: 65%
+  height: 90vh
+  max-height: 300px
+  margin: 0 auto
+  border: 2px solid #e8992c
+  border-radius: 8px
+  p
+    max-height: 200px
+    height: 200px
+
+
+.title-input
+  width: 60%
+  padding: 2%
+  margin: 1%
+  font-size: 2em
+  font-family: monospace
+  &:focus
+    border: 2px solid #e8992c
+
+.btn_container
+  margin: 0 auto
+.btn
+  width: 25%
+  height: 30px
+  background-color: #4e5985
+  border: 2px solid #6d9dbd
+  font-size: 1em
+  color: #acaaa6
+  cursor: pointer
+  border-radius: 6
+
+.btn-save
+  @extend .btn
+.btn-show_form
+  @extend .btn
+  width: 10%
+  margin-bottom: .1%
+.btn-remove
+  @extend .btn
+  margin-right: 2%
+  margin-left: 2%
+.btn-edit
+  @extend .btn
+
+textarea
+  width: 60%
+  padding: 2%
+  margin: 1%
+  font-size: 2em
+  font-family: monospace
+  resize: none
+  height: 150px
+  &:focus
+    border: 2px solid #e8992c
+ul
+  display: inline-block
+  list-style-type: none
+  background-color: #6d9dbd
+  width: 10%
+  text-align: left
+  padding: 1% 0 1% 0
+  margin-top: 0
+  max-height: fit-content
+  li
+    padding: 5%
+    border-bottom: 0.5px solid #acaaa6
+    color: #e8992c
+    &:hover
+      background-color: #EF255F
+
+.modal_view
+  display: flex
+  justify-content: center
+  position: fixed
+  width: 100%
+  height: 100%
+  z-index: 5
+  background-color: rgba(255,255,255,0.5)
+  margin: 0
+  padding: 0
+  top: 0
+  left: 0
+
+ul + span
+  width: 70%
+.slip-enter
+  opacity: 0
+  transform: translate(-250px,0)
+  transform: translate3d(-250px,0,0)
+
+.slip-enter.slip-enter-active
+  opacity: 1
+  transition: opacity 1s ease
+  transform: translate(0,0)
+  transform: translate3d(0,0,0)
+  transition-property: transform, opacity
+  transition-duration: 300ms
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear
+
+.slip-leave
+  opacity: 1
+
+.slip-leave.slip-leave-active
+  opacity: 0.01
+  transition: opacity 300ms ease-in
