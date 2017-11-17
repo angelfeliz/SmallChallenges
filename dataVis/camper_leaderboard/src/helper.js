@@ -1,6 +1,6 @@
-export const sortDescent = (propertyForSort) => {
-  console.log('waht goo inside ', this);
-return  this.sort((a,b) => {
-           return b[propertyForSort] - a[propertyForSort]
-         })
+export const sortDescent = (objToSort, propertyForSort, callback) => {
+    let sortObj = objToSort.sort((a,b) => {
+                         return b[propertyForSort] - a[propertyForSort]
+                    });
+  callback(sortObj);
 }

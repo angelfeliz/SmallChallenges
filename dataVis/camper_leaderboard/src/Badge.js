@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const  Badge = (props) => (
     <div className="container-badge flex-row">
-      <img src={props.imgUri}/>
+      <img src={props.imgUri} alt={"Avatar"}/>
       <div className="container-inline flex-column">
         <span className="title-name">{props.fullName}</span>
         <div className="flex-row">
