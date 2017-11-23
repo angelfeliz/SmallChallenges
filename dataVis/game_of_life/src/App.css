@@ -1,0 +1,15 @@
+.board-game {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell {
+  width: 20px;
+  height:15px;
+  border: 1px solid black;
+}
