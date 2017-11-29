@@ -24,11 +24,17 @@ class App extends Component {
     this.state = {
       play: true,
       board:obj,
-      shadowBoard:{}
+      shadowBoard:[]
     };
   }
 
    selectSqurad = (col,row) => {
+     let arrayShadow = [];
+     console.log(this.state.shadowBoard[col]);
+     if(this.state.shadowBoard[col]) {
+       arrayShadow[col][row] = true;
+     }
+     console.log(arrayShadow);
     if( this.state.play) {
       this.setState({
         ...this.state,
@@ -39,12 +45,19 @@ class App extends Component {
   }
 
   nextGeneration = (col, row) => {
-    let element = document.getElementsByName(`${col}-${row}`);
-    element.className = "cell on";
-    React.cloneElement(element);
+    console.log(this.state.shadowBoard);
+    let neighbour = 0;
+    for(let obj in this.state.board) {
+      console.log('next_', obj);
+      for(let objInner in this.state.board[obj]) {
+          console.log(objInner);
+        if(this.state.board[obj][objInner].active === "on") {      }
+      }
+    }
+
   }
 
-  render() {    
+  render() {
     return (
       <div className="App">
         <div className="board-game">
