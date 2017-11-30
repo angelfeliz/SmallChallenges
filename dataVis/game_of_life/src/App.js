@@ -45,16 +45,37 @@ class App extends Component {
   }
 
   nextGeneration = (col, row) => {
-    console.log(this.state.shadowBoard);
     let neighbour = 0;
+    let newGeneration  = {};
     for(let obj in this.state.board) {
-      console.log('next_', obj);
+      if(parseInt(obj) > 1 && parseInt(obj) < 70)
       for(let objInner in this.state.board[obj]) {
-          console.log(objInner);
-        if(this.state.board[obj][objInner].active === "on") {      }
+        if(parseInt(objInner) > 1 && parseInt(objInner) < 50 ) {
+            for(let col = -1; col <= 1; col++) {
+              for(let row = -1; row <= 1; row++) {
+                console.log('owner ', obj,objInner);
+                let x = parseInt(obj) + col;
+                let y = parseInt(objInner) + row;
+                console.log('the neighbour ', x,y);
+                //if(this.state.board[x][y].active === "on") {  neighbour++; }
+               }
+             }
+           }
+
+          if(neighbour > 3) {
+            console.log("mayor que 3");
+            newGeneration = {...newGeneration, [col]:{[row]: {active: ""}}}
+          }
+          if(neighbour < 3) {
+            console.log("manero que 3");
+            newGeneration = {...newGeneration, [col]:{[row]: {active: ""}}}
+          }
+          if(neighbour === 3) {
+            console.log("igual que 3");
+            newGeneration = {...newGeneration, [col]:{[row]: {active: "on"}}}
+          }
       }
     }
-
   }
 
   render() {
