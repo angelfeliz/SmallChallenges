@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Board from './Board';
+import {calculateNeighbour, checkNeighbour} from './helper.js'
 import './App.css';
 
 const COLUMN = 70;
@@ -15,6 +16,8 @@ class App extends Component {
       let obje = {
         [x]:{}
       }
+
+
       for(let y = 1 ; y <= ROW; y++)
       {
         obje[x][y] =  { active: ""  }
@@ -29,12 +32,8 @@ class App extends Component {
   }
 
    selectSqurad = (col,row) => {
-     let arrayShadow = [];
-     console.log(this.state.shadowBoard[col]);
-     if(this.state.shadowBoard[col]) {
-       arrayShadow[col][row] = true;
-     }
-     console.log(arrayShadow);
+
+
     if( this.state.play) {
       this.setState({
         ...this.state,
@@ -45,37 +44,27 @@ class App extends Component {
   }
 
   nextGeneration = (col, row) => {
-    let neighbour = 0;
     let newGeneration  = {};
-    for(let obj in this.state.board) {
-      if(parseInt(obj) > 1 && parseInt(obj) < 70)
-      for(let objInner in this.state.board[obj]) {
-        if(parseInt(objInner) > 1 && parseInt(objInner) < 50 ) {
-            for(let col = -1; col <= 1; col++) {
-              for(let row = -1; row <= 1; row++) {
-                console.log('owner ', obj,objInner);
-                let x = parseInt(obj) + col;
-                let y = parseInt(objInner) + row;
-                console.log('the neighbour ', x,y);
-                //if(this.state.board[x][y].active === "on") {  neighbour++; }
-               }
-             }
-           }
+    for(let obj in this.state.shadowBoard) {
+      for(let objInner in this.state.shadowBoard[obj]) {
+            let inobj = checkNeighbour(obj,objInner,this.state.shadowBoard,this.state.board);
+            console.log('in new ', inobj);
 
-          if(neighbour > 3) {
-            console.log("mayor que 3");
-            newGeneration = {...newGeneration, [col]:{[row]: {active: ""}}}
-          }
-          if(neighbour < 3) {
-            console.log("manero que 3");
-            newGeneration = {...newGeneration, [col]:{[row]: {active: ""}}}
-          }
-          if(neighbour === 3) {
-            console.log("igual que 3");
-            newGeneration = {...newGeneration, [col]:{[row]: {active: "on"}}}
-          }
-      }
-    }
+            /*for(let col = -1; col <= 1; col++) {
+                let x = parseInt(obj) + col;
+                if(this.state.board.hasOwnProperty([x])) {
+                   for(let row = -1; row <= 1; row++) {
+                       let y = parseInt(objInner) + row;
+                       if(this.state.board[x].hasOwnProperty([y]))  {
+                          if(this.state.board[x][y].active === "on") {  neighbour++; }
+                        }
+                      }
+                   }
+                }
+                calculateNeighbour(neighbour,col,row);*/
+                //newGeneration = {...newGeneration, ...calculateNeighbour(neighbour,col,row)}
+              }
+            }
   }
 
   render() {
